@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1 style="text-align: center">ADD product</h1>
+    <br>
+    <div class="container" style="border-style: groove">
+            <a>Product code</a>
+            <input type="text" placeholder="Enter product code here"/>
+            <input class="btn btn-primary" type="submit" name="search" value="search"/>
+
+            <br>
+            <a>Category: </a>
+
+            <select>
+            <option >--Select-- </option>
+                {% for category in object_list %}
+
+                    <option value="{{ category.Category_Name }}">{{ category.Category_Name }} </option>
+
+            {% endfor %}
+            </select>
+
+            <div>
+                <br>
+                <a>Product: </a>
+               <select>
+               <option>--Select--</option>
+                   {% for product in object_list %}
+                   <option>{{ product.Name }}</option>
+
+                   {% endfor %}
+               </select>
+            </div>
+
+   <input style="margin-left:300px" class="btn btn-primary" type="submit" name="search" value="Submit"/>
+    </div>
+
+
+<h1 style="text-align: center"> Product List</h1>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+
+            .css-serial {
+          counter-reset: serial-number;  /* Set the serial number counter to 0 */
+        }
+
+        .css-serial td:first-child:before {
+          counter-increment: serial-number;  /* Increment the serial number counter */
+          content: counter(serial-number);  /* Display the counter */
+        }
+</style>
+<div style="border-style: groove" class="container">
+
+        <table class="css-serial" style="width: 70%;text-align: center">
+          <thead>
+            <tr>
+              <th>SL</th>
+                <th>P_code</th>
+                <th>P_Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!--intentionally left blank-->
+              <td></td>
+                {% for cart in object_list %}
+              <td>{{ cart.Name }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+              <!--intentionally left blank-->
+              <td></td>
+              <td> 1</td>
+              <td> 2</td>
+              <td>Column 2</td>
+              <td>Column 2</td>
+            </tr>
+            <tr>
+              <!--intentionally left blank-->
+              <td></td>
+              <td>Column 1</td>
+              <td>Column 2</td>
+              <td>Column 2</td>
+              <td>Column 2</td>
+            </tr>
+            <tr>
+              <!--intentionally left blank-->
+              <td></td>
+              <td>Column 1</td>
+              <td>Column 2</td>
+              <td>Column 2</td>
+              <td>Column 2</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+{% endblock %}
